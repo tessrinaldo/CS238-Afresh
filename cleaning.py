@@ -12,12 +12,12 @@ dtypes = {'store_nbr': np.dtype('int64'),
           }
 
 '''Read in files'''
-pd_train = pd.read_csv('data/train_medium.csv', dtype=dtypes)
-stores = pd.read_csv('data/stores.csv',  dtype=dtypes)
-items = pd.read_csv('data/items.csv',  dtype=dtypes)
+pd_train = pd.read_csv('train_medium.csv', dtype=dtypes)
+stores = pd.read_csv('stores.csv',  dtype=dtypes)
+items = pd.read_csv('items.csv',  dtype=dtypes)
 #trans = pd.read_csv('data/transactions.csv',  dtype=dtypes)
-oil = pd.read_csv('data/oil.csv')
-holidays = pd.read_csv('data/holidays_events.csv', dtype=dtypes)
+oil = pd.read_csv('oil.csv')
+holidays = pd.read_csv('holidays_events.csv', dtype=dtypes)
 
 # print('DATATYPES: items')
 # print(items.dtypes)
@@ -43,10 +43,10 @@ pd_train = pd_train.drop(['description', 'state', 'locale_name', 'class', 'dcoil
 # print('dropped bunch of stuff')
 # print(pd_train.head())
 
-'''Change date column to reflect month only'''
-for idx, date in enumerate(pd_train['date']):
-  sdate = int(str(date).split("/", 1)[0])
-  pd_train['date'][idx] = sdate
+# '''Change date column to reflect month only'''
+# for idx, date in enumerate(pd_train['date']):
+#   sdate = int(str(date).split("/", 1)[0])
+#   pd_train['date'][idx] = sdate
 
 #Rearranging, renaming columns
 cols = pd_train.columns.tolist()
@@ -62,7 +62,7 @@ print(pd_train.dtypes)
 
 
 '''Write results to cleaned_train_medium.csv '''
-pd_train.to_csv('data/cleaned_train_medium.csv', index=False)
+pd_train.to_csv('cleaned_train_medium.csv', index=False)
 
 print('after merging ')
 print(list(pd_train.columns.values))
